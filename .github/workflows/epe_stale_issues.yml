@@ -1,0 +1,17 @@
+name: 'Close stale issues/PRs'
+on:
+  workflow_call:
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/stale@v9
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        days-before-issue-stale: 42
+        days-before-issue-close: 7
+        days-before-pr-stale: -1
+        days-before-pr-close: -1
+        stale-issue-message: "This issue is stale because it has been open more than 6 weeks with no activity. Please comment on this issue if it's still relevant or it will be closed automatically after 1 week."
+        close-issue-message: "This issue was closed because it has been stalled for 1 week with no activity."
